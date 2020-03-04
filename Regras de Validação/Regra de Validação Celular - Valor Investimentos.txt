@@ -1,0 +1,36 @@
+IF(
+    (PersonMobilePhone<>''),
+        
+    (IF(
+        
+        (RecordType.Name = "Assessor"),
+        
+        (IF(
+        
+            (OR(
+            
+                (ISNUMBER(PersonMobilePhone)), 
+            
+                (AND(
+                
+                    (MID(PersonMobilePhone,1,1) = '('),
+                     
+                    (MID(PersonMobilePhone,4,1) = ')'),
+                     
+                    (MID(PersonMobilePhone,10,1) = '-')
+                    
+                ))
+                
+            )),
+            
+            (false),
+            
+            (true)
+        )),
+        
+        (false)
+        
+    )),
+        
+    (false)
+)
